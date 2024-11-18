@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {appService} from "./services/appService.tsx";
+import {fetchMenu} from "./services/menuService.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export function App() {
+    const pageObj = appService.getPageObject();
+    const menuJson = fetchMenu();
+    return (
+
+        // <>
+        //   { pageObj.title }
+        //   <h3>{pageObj.subTitle}</h3>
+        //   <p>{pageObj.mainContent}</p>
+        //   <p>data di pubblicazione: {pageObj.publishDate}</p>
+        // </>
+
+        <>
+            <h1>{pageObj.title}</h1>
+            <ul>
+                {pageObj.menuEntries.map(menuEntry => <li key={menuEntry}>{menuEntry}</li>)}
+            </ul>
+            {menuJson.map(el =>
+                <>
+                    <h2 className={'mt-2'}>{el.title}</h2>
+                    <p>posted by {el.author}, {el.publishDate.toDateString()}</p>
+                    <div>{el.subTitle}</div>
+                    {el.menuSections.map(section =>
+                    <>
+                        <h3>{section.title}</h3>
+                        {section.menuEntries.map(menuEntry =>
+                        <>
+                            <p>{menuEntry.plateTitle} {menuEntry.isNew ? <strong>- new item!</strong> : <></>}</p>
+                            <p className={'ml-2'}>{menuEntry.plateDescription} <span>$ {menuEntry.price}</span></p>
+                         </>
+                        )}
+                    </>)}
+                </>
+            )}
+            <footer className={'mt-4'}>
+                {pageObj.footer}
+            </footer>
+        </>
+    )
 }
-
-export default App
