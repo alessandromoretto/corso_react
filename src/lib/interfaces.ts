@@ -24,6 +24,9 @@ export interface SubSection {
     plates: Plate[];
 }
 
+export interface IMenuPlate {
+    plate: Plate;
+}
 export interface Plate {
     plateTitle: string;
     plateDescription: string;

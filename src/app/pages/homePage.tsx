@@ -1,6 +1,7 @@
 import {appService} from "../../services/appService.tsx";
 import {fetchMenu} from "../../services/menuService.tsx";
 import {MenuSection} from "../components/menuSection.tsx";
+import {Footer} from "../components/footer.tsx";
 
 export function HomePage() {
     const pageObj = appService.getPageObject();
@@ -11,12 +12,12 @@ export function HomePage() {
             <ul>
                 {pageObj.appMenuEntries.map(menuEntry => <li key={menuEntry}>{menuEntry}</li>)}
             </ul>
-            {menuJson.map(sec =>
+            {menuJson?.map(sec =>
                 <MenuSection title={sec.title} author={sec.author} publishDate={sec.publishDate} subTitle={sec.subTitle} menuSubSections={sec.menuSubSections}/>
             )}
-            <footer className={'mt-4'}>
+            <Footer>
                 {pageObj.footer}
-            </footer>
+            </Footer>
         </>
     )
 }

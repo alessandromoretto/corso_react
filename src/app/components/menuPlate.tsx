@@ -1,6 +1,7 @@
-import {Plate} from "../../lib/interfaces.ts";
+import {IMenuPlate} from "../../lib/interfaces.ts";
 
-export function MenuPlate({plateTitle, plateDescription, price, isNew}: Plate) {
+export function MenuPlate(props: IMenuPlate) {
+    const {plateTitle, plateDescription, price, isNew} = props.plate;
     return (
         <>
             <p>{plateTitle} {isNew && <strong>- new item!</strong>}</p>

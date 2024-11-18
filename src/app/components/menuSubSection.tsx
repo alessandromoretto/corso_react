@@ -5,8 +5,8 @@ export function MenuSubSection({title, plates}: SubSection) {
     return (
         <>
             <h3>{title}</h3>
-            {plates.map(menuEntry =>
-                <MenuPlate plateTitle={menuEntry.plateTitle} plateDescription={menuEntry.plateDescription} isNew={menuEntry.isNew} price={menuEntry.price} />
+            {plates.map(plate =>
+                <MenuPlate plate={plate}/>
             )}
         </>
     )
