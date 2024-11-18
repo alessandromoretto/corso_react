@@ -8,10 +8,10 @@ export function fetchMenu(): Section[] {
                 Stop by to try these appetizers and main courses while the days are still long.</p>,
             author: 'BGB',
             publishDate: new Date(),
-            menuSections: [
+            menuSubSections: [
                 {
                     title: 'Appetizers',
-                    menuEntries: [
+                    plates: [
                         {
                             plateTitle: 'Black bean purses',
                             plateDescription: 'Spicy black bean and a blend of Mexican cheeses wrapped in sheets of phyl-lo and baked until golden.',
@@ -28,7 +28,7 @@ export function fetchMenu(): Section[] {
                 },
                 {
                     title: 'Main courses',
-                    menuEntries: [
+                    plates: [
                         {
                             plateTitle: 'Shrimp sate kebabs with peanut sauce',
                             plateDescription: 'Skewers of shrimp marinated in lemongrass, garlic and fish sauce then grilled to perfection. Served with spicy peanut sauce and Jasmine rice. ',
@@ -62,7 +62,7 @@ export function fetchMenu(): Section[] {
                 </>    ,
             author: 'BGB',
             publishDate: new Date(),
-            menuSections: []
+            menuSubSections: []
         }
     ]
 }

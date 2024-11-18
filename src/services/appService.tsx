@@ -14,7 +14,7 @@ class AppService {
     getPageObject(): AppContent {
         return {
             title: 'The Black Goose Bistro News',
-            menuEntries: ['Home', ' Menu', 'News', 'Contact'],
+            appMenuEntries: ['Home', ' Menu', 'News', 'Contact'],
             footer:
                 <>
                     <div>

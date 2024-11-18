@@ -7,7 +7,7 @@
 
 export interface AppContent {
     title: string;
-    menuEntries: string[];
+    appMenuEntries: string[];
     footer: JSX.Element;
 }
 
@@ -16,15 +16,15 @@ export interface Section {
     author: string;
     publishDate: Date;
     subTitle: JSX.Element;
-    menuSections: MenuSection[];
+    menuSubSections: SubSection[];
 }
 
-export interface MenuSection {
+export interface SubSection {
     title: string;
-    menuEntries: MenuEntry[];
+    plates: Plate[];
 }
 
-export interface MenuEntry {
+export interface Plate {
     plateTitle: string;
     plateDescription: string;
     isNew: boolean;
