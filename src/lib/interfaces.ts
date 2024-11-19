@@ -33,3 +33,14 @@ export interface Plate {
     isNew: boolean;
     price: number;
 }
+
+export interface ITodo {
+    id: number;
+    title: string;
+    done: boolean;
+}
+
+export interface TodoItemProps {
+    todo: ITodo,
+    onDoneClick: (value: any) => void,
+}

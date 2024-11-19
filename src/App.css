@@ -69,3 +69,15 @@
   color: #003423;
 
 }
+
+.todos-container {
+  max-width: 1280px;
+
+}
+
+.only-on-hover > button{
+  opacity: 0;
+}
+.only-on-hover:hover > button{
+  opacity: 1;
+}
