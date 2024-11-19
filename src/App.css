@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /*max-width: 1280px;*/
+  /*margin: 0 auto;*/
+  /*padding: 2rem;*/
   /*text-align: center;*/
 }
 
@@ -44,10 +44,28 @@
 .ml-2{
   margin-left: 2em;
 }
+.menu-section {
+  color: #494815;
+}
+.goose-btn {
+  background: #003423; color: #ffa906;
+}
 .mt-2 {
   margin-top: 2em;
 }
+
+
+.main-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 .footer {
+  position: static;
+  width: 100%;
+  /*padding: 3rem;*/
   margin-top: 4em;
-  background: gray;
+  background: #00342345;
+  color: #003423;
+
 }

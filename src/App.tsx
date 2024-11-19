@@ -1,9 +1,9 @@
 import './App.css'
-import {CustomComponentsHomePage} from "./app/pages/customComponentsHomePage.tsx";
+import {RestaurantHomePage} from "./app/pages/restaurantHomePage.tsx";
 
 export function App() {
     return (
-        // <RestaurantHomePage />
-        <CustomComponentsHomePage/>
+        <RestaurantHomePage />
+        // <CustomComponentsHomePage/>
     )
 }

@@ -4,8 +4,8 @@ export function MenuPlate(props: IMenuPlate) {
     const {plateTitle, plateDescription, price, isNew} = props.plate;
     return (
         <>
-            <p>{plateTitle} {isNew && <strong>- new item!</strong>}</p>
-            <p className={'ml-2'}>{plateDescription} <span>$ {price}</span></p>
+            <p style={{color: '#825603', fontWeight: 'bold'}}>{plateTitle} {isNew && <strong style={{color: '#003423',fontStyle: 'italic'}}>- new item!</strong>}</p>
+            <p className={'ml-2'} style={{fontStyle: 'italic'}}>{plateDescription} <span>$ {price}</span></p>
         </>
     )
 }

@@ -8,55 +8,59 @@ import {fetchMenu, fetchMenuUpdates} from "../../services/menuService.tsx";
 export function RestaurantHomePage() {
     const pageObj = appService.getPageObject();
 
-    const [menuJson, setMenuJson] = useState<Section[]>(fetchMenu());
+    // const [menuJson, setMenuJson] = useState<Section[]>(fetchMenu());
     const [menuShown, setMenuShown] = useState<Section[]>([]);
     const [showAll, setShowAll] = useState<boolean>(true);
     // const menuJson = fetchMenu();
 
-    const addMenuSection = () => {
-        setMenuJson((menuJson) =>
-            [
-                ...menuJson,
-                ...fetchMenuUpdates()
-            ]
-        )
-    }
+    useEffect(() => {
+        filter();
+    },[showAll])
 
-    const showFiltered = () => {
+    // const addMenuSection = () => {
+    //     setMenuJson((menuJson) =>
+    //         [
+    //             ...menuJson,
+    //             ...fetchMenuUpdates()
+    //         ]
+    //     )
+    // }
+
+    const filter = () => {
         setMenuShown(() => {
-            const res = [...menuJson];
+            const res = [...fetchMenu()];
             res.forEach(sec =>
                 sec.menuSubSections.forEach(subSec => {
                     subSec.plates = subSec.plates.filter(plate => showAll || plate.isNew);
                 }))
-                return res;
-            })
+            return res;
+        })
     }
 
     const toggleVisibility = () => {
         setShowAll((showAll) => !showAll);
     }
 
-    useEffect(() => {
-        showFiltered();
-    },[showAll])
-
     return (
         <>
-            <h1>{pageObj.title}</h1>
-            <ul>
-                {pageObj.appMenuEntries.map(menuEntry => <li key={menuEntry}>{menuEntry}</li>)}
-            </ul>
-            <div>
-                <button onClick={addMenuSection} style={{background: '#003423'}}>Add menu section</button>
+            <div className={'main-content'}>
+
+                <h1 style={{color: '#825603'}}>{pageObj.title}</h1>
+                <ul style={{color: '#825603'}}>
+                    {pageObj.appMenuEntries.map(menuEntry => <li key={menuEntry}>{menuEntry}</li>)}
+                </ul>
+                {/*<div>*/}
+                {/*    <button onClick={addMenuSection} style={{background: '#003423'}}>Add menu section</button>*/}
+                {/*</div>*/}
+                <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
+                    <button onClick={toggleVisibility} className={'goose-btn'}>Show {showAll ? 'only NEW PLATES' : 'ALL'}</button>
+                </div>
+                {menuShown?.map(sec =>
+                    <MenuSection key={Math.random()} title={sec.title} author={sec.author} publishDate={sec.publishDate}
+                                 subTitle={sec.subTitle} menuSubSections={sec.menuSubSections}/>
+                )}
             </div>
-            <div>
-                <button onClick={toggleVisibility} style={{background: '#003423'}}>Show {showAll ? 'only NEW PLATES' : 'ALL'}</button>
-            </div>
-            {menuShown?.map(sec =>
-                <MenuSection key={Math.random()} title={sec.title} author={sec.author} publishDate={sec.publishDate}
-                             subTitle={sec.subTitle} menuSubSections={sec.menuSubSections}/>
-            )}
+
             <Footer>
                 {pageObj.footer}
             </Footer>

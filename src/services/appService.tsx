@@ -18,11 +18,11 @@ class AppService {
             footer:
                 <>
                     <div>
-                        <p>Location:</p>
+                        <p><strong>Location:</strong></p>
                         <p>Baker's Corner, Seekonk, MA</p>
                     </div>
                     <div>
-                        <p>Hours:</p>
+                        <p><strong>Hours:</strong></p>
                         <p>Tuesday to Saturday, 11am to 11pm</p>
                     </div>
                 </>
