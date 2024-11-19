@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {Section} from "../../lib/interfaces.ts";
 import {fetchMenu, fetchMenuUpdates} from "../../services/menuService.tsx";
 
-export function HomePage() {
+export function RestaurantHomePage() {
     const pageObj = appService.getPageObject();
 
     const [menuJson, setMenuJson] = useState<Section[]>(fetchMenu());

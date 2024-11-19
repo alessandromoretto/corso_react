@@ -1,8 +1,8 @@
 import './App.css'
-import {HomePage} from "./app/pages/homePage.tsx";
+import {RestaurantHomePage} from "./app/pages/restaurantHomePage.tsx";
 
 export function App() {
     return (
-        <HomePage />
+        <RestaurantHomePage />
     )
 }
