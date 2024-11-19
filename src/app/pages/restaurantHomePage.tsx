@@ -3,7 +3,8 @@ import {MenuSection} from "../components/menuSection.tsx";
 import {Footer} from "../components/footer.tsx";
 import {useEffect, useState} from "react";
 import {Section} from "../../lib/interfaces.ts";
-import {fetchMenu, fetchMenuUpdates} from "../../services/menuService.tsx";
+import {fetchMenu} from "../../services/menuService.tsx";
+import {Card} from "../components/card.tsx";
 
 export function RestaurantHomePage() {
     const pageObj = appService.getPageObject();
@@ -49,6 +50,9 @@ export function RestaurantHomePage() {
                 <ul style={{color: '#825603'}}>
                     {pageObj.appMenuEntries.map(menuEntry => <li key={menuEntry}>{menuEntry}</li>)}
                 </ul>
+
+                <Card />
+
                 {/*<div>*/}
                 {/*    <button onClick={addMenuSection} style={{background: '#003423'}}>Add menu section</button>*/}
                 {/*</div>*/}
