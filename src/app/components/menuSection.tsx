@@ -8,7 +8,7 @@ export function MenuSection({title, subTitle, author, publishDate, menuSubSectio
             <p>posted by {author}, {publishDate.toDateString()}</p>
             <div>{subTitle}</div>
             {menuSubSections.map(subSection =>
-                <MenuSubSection title={subSection.title} plates={subSection.plates} />
+                <MenuSubSection key={Math.random()} title={subSection.title} plates={subSection.plates} />
             )}
         </>
     )

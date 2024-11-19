@@ -6,7 +6,7 @@ export function MenuSubSection({title, plates}: SubSection) {
         <>
             <h3>{title}</h3>
             {plates.map(plate =>
-                <MenuPlate plate={plate}/>
+                <MenuPlate key={Math.random()} plate={plate}/>
             )}
         </>
     )

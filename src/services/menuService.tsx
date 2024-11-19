@@ -66,3 +66,21 @@ export function fetchMenu(): Section[] {
         }
     ]
 }
+
+export function fetchMenuUpdates(): Section[] {
+ return [{title: 'Christmas Menu',
+        author: 'Santa Claus',
+        publishDate: new Date(),
+        subTitle: <p>Merry Christmas</p>,
+        menuSubSections: [
+            {title: 'Lunch',
+                plates: [
+                    {
+                        plateTitle: 'Panettone',
+                        plateDescription: 'Panettone classico',
+                        price: 0,
+                        isNew: false
+                    }
+                ]}
+        ]}]
+}
