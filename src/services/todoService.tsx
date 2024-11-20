@@ -7,6 +7,16 @@ export function getAllTodos(): ITodo[] {
 export function removeById(id: number) {
     mock = mock.filter(m => m.id !== id);
 }
+
+export function setAsDoneById(id: number) {
+    mock = mock.map(m => {
+
+        if (m.id == id) {
+            m.done = true;
+        }
+        return m;
+    });
+}
 let mock = [
     {id: Math.random(), title: 'basics', done: false},
     {id: Math.random(), title: 'hooks', done: false},

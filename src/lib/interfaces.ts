@@ -43,4 +43,5 @@ export interface ITodo {
 export interface TodoItemProps {
     todo: ITodo,
     onDoneClick: (value: any) => void,
+    onRemoveClick: (value: any) => void,
 }

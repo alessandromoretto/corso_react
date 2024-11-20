@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {ITodo} from "../../lib/interfaces.ts";
-import {getAllTodos, removeById} from "../../services/todoService.tsx";
+import {getAllTodos, removeById, setAsDoneById} from "../../services/todoService.tsx";
 import {TodoItem} from "../components/todoItem.tsx";
 
 export function TodoHomePage() {
@@ -15,8 +15,12 @@ export function TodoHomePage() {
     }
 
     const removeTodo = (id: number) => {
-        console.log(id)
         removeById(id)
+        fetch();
+    }
+
+    const setAsDone = (id: number) => {
+        setAsDoneById(id)
         fetch();
     }
 
@@ -26,7 +30,7 @@ export function TodoHomePage() {
             <h1 className={'ml-8'}>Todos: {todos.length}</h1>
             <div className={'todos-container p-4 mx-auto grid grid-cols-4 gap-4 justify-content-center'}>
                 {todos?.map(todo =>
-                    <TodoItem key={todo.id} todo={todo} onDoneClick={removeTodo}/>
+                    <TodoItem key={todo.id} todo={todo} onDoneClick={setAsDone} onRemoveClick={removeTodo}/>
                 )}
             </div>
             </div>
