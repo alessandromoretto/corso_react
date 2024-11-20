@@ -1,10 +1,12 @@
 import {FormEvent, useEffect, useState} from "react";
 import * as React from "react";
 import {UserFormData} from "../../lib/interfaces.ts";
+import {useNavigate} from "react-router-dom";
 
 export function RegisterForm() {
 
     const [users, setUSers] = useState<UserFormData[]>([]);
+    const navigateTo = useNavigate();
 
     const [registerForm, setRegisterForm] = useState<UserFormData>({
         firstName: "",
@@ -27,6 +29,7 @@ export function RegisterForm() {
         e.preventDefault();
         console.log(registerForm);
         setUSers([...users, registerForm]);
+        navigateTo('/')
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
