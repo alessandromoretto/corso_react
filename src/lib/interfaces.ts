@@ -45,3 +45,10 @@ export interface TodoItemProps {
     onDoneClick: (value: any) => void,
     onRemoveClick: (value: any) => void,
 }
+
+
+export interface UserFormData {
+    firstName: string,
+    enabled: boolean;
+    category: number;
+}
