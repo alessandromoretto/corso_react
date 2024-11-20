@@ -6,13 +6,10 @@ export function Header(){
             <nav>
                 <ul>
                     <li>
-                        <NavLink to={'/'}>Home</NavLink>
+                        <NavLink to={'/'}>Todos List</NavLink>
                     </li>
                     <li>
-                        <NavLink to={'/contacts'}>Contacts</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to={'/register'}>Register</NavLink>
+                        <NavLink to={'/add'}>Add Todo</NavLink>
                     </li>
                 </ul>
             </nav>

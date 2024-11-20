@@ -9,8 +9,9 @@ export function Layout(){
     return (
         <>
             <Header/>
-            {/*<h1>CONTENT</h1>*/}
-            {outlet}
+            <div style={{height: '80dvh'}}>
+                {outlet}
+            </div>
             <Footer/>
         </>
     )

@@ -47,8 +47,10 @@ export interface TodoItemProps {
     onRemoveClick: (value: any) => void,
 }
 
-export interface AddTodoItemProps {
-    onAddClick: (todo: ITodo) => void,
+export interface TodoFormItemProps {
+    value?: ITodo,
+    onSaveClick: (todo: ITodo) => void,
+    buttonLabel: string
 }
 
 

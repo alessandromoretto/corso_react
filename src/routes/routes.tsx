@@ -1,6 +1,10 @@
 import {Home} from "../app/pages/home.tsx";
 import {Layout} from "../app/components/layout.tsx";
 import {RegisterForm} from "../app/components/registerForm.tsx";
+import {TodoHomePage} from "../app/pages/todoHomePage.tsx";
+import {TodoItemForm} from "../app/components/todoItemForm.tsx";
+import {AddTodoPage} from "../app/pages/addTodoPage.tsx";
+import {EditTodoPage} from "../app/pages/editTodoPage.tsx";
 
 export const routes = [
     {
@@ -11,15 +15,15 @@ export const routes = [
                 children: [
                     {
                         path: "",
-                        element: <Home/>,
+                        element: <TodoHomePage/>,
                     },
                     {
-                        path: "register",
-                        element: <RegisterForm/>
+                        path: "add",
+                        element: <AddTodoPage/>
                     },
                     {
-                        path: "contacts",
-                        element: <h1>CONTACTS</h1>
+                        path: ":id",
+                        element: <EditTodoPage/>
                     }
                 ]
             },
