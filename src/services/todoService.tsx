@@ -4,6 +4,11 @@ export function getAllTodos(): ITodo[] {
     return mock;
 }
 
+export function add(todo: ITodo) {
+    todo.id = Math.random();
+    mock.push(todo);
+}
+
 export function removeById(id: number) {
     mock = mock.filter(m => m.id !== id);
 }
@@ -17,12 +22,12 @@ export function setAsDoneById(id: number) {
         return m;
     });
 }
-let mock = [
-    {id: Math.random(), title: 'basics', done: false},
-    {id: Math.random(), title: 'hooks', done: false},
-    {id: Math.random(), title: 'styles', done: false},
-    {id: Math.random(), title: 'css libraries', done: false},
-    {id: Math.random(), title: 'forms', done: false},
-    {id: Math.random(), title: 'routing', done: false},
-    {id: Math.random(), title: 'security', done: false},
+let mock: ITodo[] = [
+    {id: Math.random(), title: 'basics', description: 'basics', done: false},
+    {id: Math.random(), title: 'hooks', description: 'hooks', done: false},
+    {id: Math.random(), title: 'styles', description: 'styles', done: false},
+    {id: Math.random(), title: 'css', description: 'css', done: false},
+    {id: Math.random(), title: 'forms', description: 'forms', done: false},
+    {id: Math.random(), title: 'routing', description: 'routing', done: false},
+    {id: Math.random(), title: 'security', description: 'security', done: false},
 ]

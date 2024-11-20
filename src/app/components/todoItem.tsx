@@ -5,7 +5,7 @@ export function TodoItem({todo, onDoneClick, onRemoveClick}: TodoItemProps) {
         <div className="card only-on-hover" style={{width: '18rem'}}>
             <div className="card-body mb-8" style={{textDecoration: (todo.done ? 'line-through' : 'unset')}}>
                 <h5 className="card-title">{todo.title}</h5>
-                <p className="card-text">{todo.title}</p>
+                <p className="card-text">{todo.description}</p>
             </div>
             {
                 !todo.done &&

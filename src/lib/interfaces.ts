@@ -35,8 +35,9 @@ export interface Plate {
 }
 
 export interface ITodo {
-    id: number;
+    id?: number;
     title: string;
+    description: string;
     done: boolean;
 }
 
@@ -44,6 +45,10 @@ export interface TodoItemProps {
     todo: ITodo,
     onDoneClick: (value: any) => void,
     onRemoveClick: (value: any) => void,
+}
+
+export interface AddTodoItemProps {
+    onAddClick: (todo: ITodo) => void,
 }
 
 
