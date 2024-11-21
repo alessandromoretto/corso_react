@@ -2,7 +2,7 @@ import * as React from "react";
 import {useState} from "react";
 import {IRegister} from "../../lib/interfaces.ts";
 import {useNavigate} from "react-router-dom";
-import {signup} from "../../services/authService.ts";
+import {signupService} from "../../services/authService.ts";
 import validationService from "../../services/validationService.ts";
 
 export function SignupPage() {
@@ -20,7 +20,7 @@ export function SignupPage() {
             return
         }
 
-        signup(register)
+        signupService(register)
             .then(
                 res => {
                     setOk(true);

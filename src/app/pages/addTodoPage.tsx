@@ -10,9 +10,9 @@ export function AddTodoPage() {
     const navigateTo = useNavigate();
     const {isLogged} = useContext(AuthContext) as IAuthContext;
 
-    if (!isLogged()) {
-        navigateTo('/login')
-    }
+    // if (!isLogged()) {
+    //     navigateTo('/login')
+    // }
 
     const addTodo = (todo: ITodo) => {
         add(todo);

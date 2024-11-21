@@ -13,10 +13,10 @@ export function Layout(){
     const navigator = useNavigate();
 
     useEffect(() => {
-
-        if (!isLogged() && window.location.pathname !== "/login") {
-            navigator('/login')
-        }
+        console.log(isLogged());
+        // if (!isLogged() && window.location.pathname !== "/login") {
+        //     navigator('/login')
+        // }
     })
 
     return (

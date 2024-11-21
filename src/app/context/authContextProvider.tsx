@@ -1,26 +1,41 @@
-import {useState} from "react";
-import {User} from "../../lib/interfaces.ts";
+import {useEffect, useState} from "react";
+import {ITokenContent} from "../../lib/interfaces.ts";
 import {AuthContext} from "./authContext.tsx";
+import {jwtDecode} from "jwt-decode";
 
 export function AuthContextProvider({ children }: { children: React.ReactNode }) {
 
-    const [user, setUser] = useState<User>({firstName: '', lastName: '', email: ''});
+    const [token, setToken] = useState<string>(localStorage.getItem("token") || '');
+    const [tokenContent, setTokenContent] = useState<ITokenContent>({firstName: '', lastName: '', email: '', role: ''});
 
-    function handleSetUser(data: User) {
-        setUser(data);
-        if (data && data.email) {
-            localStorage.setItem("token", JSON.stringify("token"));
+    useEffect(() => {
+        if (token) {
+            localStorage.setItem("token", token);
         } else {
             localStorage.removeItem("token");
         }
+        handleTokenContent();
+    },[token]);
+
+    function handleTokenContent() {
+        if (!token) {
+            setTokenContent({firstName: '', lastName: '', email: '', role: ''});
+            return
+        }
+        const decode = jwtDecode(token);
+        setTokenContent(decode as ITokenContent);
+    }
+
+    function handleSetToken(data: string) {
+        setToken(data);
     }
 
     const isLogged = () => {
-        return !!localStorage.getItem('token');
+        return !!(tokenContent && tokenContent.email);
     };
 
     return (
-        <AuthContext.Provider value={{user, handleSetUser, isLogged}}>
+        <AuthContext.Provider value={{tokenContent, handleSetToken, isLogged}}>
             {children}
         </AuthContext.Provider>
     )

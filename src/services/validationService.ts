@@ -1,4 +1,4 @@
-import {IRegister} from "../lib/interfaces.ts";
+import {ILogin, IRegister} from "../lib/interfaces.ts";
 import z from "zod";
 
 class ValidationService {
@@ -12,6 +12,15 @@ class ValidationService {
         }).required();
 
         return registerRequest.safeParse(signup);
+    }
+
+    loginValidator(login: ILogin) {
+        const loginRequest = z.object({
+            email: z.string().min(6).email(),
+            password: z.string().min(8)//.max(18).regex(/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{12,18}$/)
+        }).required();
+
+        return loginRequest.safeParse(login);
     }
 
 }

@@ -68,8 +68,8 @@ export interface User {
 }
 
 export interface IAuthContext {
-    user: User,
-    handleSetUser: (user: User) => void,
+    tokenContent: ITokenContent,
+    handleSetToken: (token: string) => void,
     isLogged: () => boolean,
 }
 
@@ -79,4 +79,17 @@ export interface IRegister {
     lastName: string;
     email: string;
     password: string;
+}
+
+
+export interface ILogin {
+    email: string;
+    password: string;
+}
+
+export interface ITokenContent {
+    "firstName": string,
+    "lastName": string,
+    "email": string,
+    "role": string,
 }

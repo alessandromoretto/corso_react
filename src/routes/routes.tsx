@@ -1,45 +1,43 @@
-import {Layout} from "../app/components/layout.tsx";
-import {TodoHomePage} from "../app/pages/todoHomePage.tsx";
-import {AddTodoPage} from "../app/pages/addTodoPage.tsx";
-import {EditTodoPage} from "../app/pages/editTodoPage.tsx";
-import {Login} from "../app/pages/login.tsx";
+import {LoginPage} from "../app/pages/login.tsx";
 import {SignupPage} from "../app/pages/signup.tsx";
+import {Layout} from "../app/components/layout.tsx";
+import {HomePage} from "../app/pages/home.tsx";
 
 export const routes = [
-    // {
-    //     element: <Layout/>,
-    //     children: [
-    //         {
-    //             path: "/",
-    //             children: [
-    //                 {
-    //                     path: "",
-    //                     element: <TodoHomePage/>,
-    //                 },
-    //                 {
-    //                     path: "add",
-    //                     element: <AddTodoPage/>
-    //                 },
-    //                 {
-    //                     path: ":id",
-    //                     element: <EditTodoPage/>
-    //                 },
-    //                 {
-    //                     path: 'login',
-    //                     element: <Login/>,
-    //                 },
-    //             ]
-    //         },
-    //         // {
-    //         //     path: "login",
-    //         //     element: <h1>Login</h1>,
-    //         // },
-    //     ]
-    //
-    // },
+    {
+        element: <Layout/>,
+        children: [
+            {
+                path: "/",
+                children: [
+                    {
+                        path: "",
+                        element: <HomePage/>,
+                    },
+                    // {
+                    //     path: "add",
+                    //     element: <AddTodoPage/>
+                    // },
+                    // {
+                    //     path: ":id",
+                    //     element: <EditTodoPage/>
+                    // },
+                ]
+            },
+            // {
+            //     path: "login",
+            //     element: <h1>Login</h1>,
+            // },
+        ]
+
+    },
     {
         path: "/signup",
         element: <SignupPage/>,
+    },
+    {
+        path: "/login",
+        element: <LoginPage/>,
     },
     {
         path: "*",

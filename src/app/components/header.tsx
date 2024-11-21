@@ -5,21 +5,22 @@ import {IAuthContext} from "../../lib/interfaces.ts";
 
 export function Header(){
 
-    const {user, handleSetUser} = useContext(AuthContext) as IAuthContext;
+    const {tokenContent, handleSetToken, isLogged} = useContext(AuthContext) as IAuthContext;
     const navigator = useNavigate();
 
     const logout = (e: any) => {
         e.preventDefault();
-        handleSetUser({firstName: '', email: '', lastName: ''});
+        handleSetToken('');
         navigator('/login')
     }
 
     return (
         <>
             {
-                user && user.email &&  <header>
-                    <h3>User: {user.firstName}</h3>
-                    <h3>Email: {user.email}</h3>
+                isLogged() &&
+                <header >
+                    <h3>User: {tokenContent.firstName}</h3>
+                    <h3 className={'mb-4'}>Email: {tokenContent.email}</h3>
                     <nav>
                         <ul>
                             <li>
