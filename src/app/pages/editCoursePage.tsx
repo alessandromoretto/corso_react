@@ -104,7 +104,7 @@ export function EditCoursePage() {
 
                             <div>
                                 <label>Category</label>
-                                <select name="categoryId" onChange={handleInputChange}>
+                                <select name="categoryId" value={course.categoryId} onChange={handleInputChange}>
                                     {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
                                 </select>
                             </div>
