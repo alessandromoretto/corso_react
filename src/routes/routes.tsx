@@ -2,6 +2,7 @@ import {LoginPage} from "../app/pages/login.tsx";
 import {SignupPage} from "../app/pages/signup.tsx";
 import {Layout} from "../app/components/layout.tsx";
 import {HomePage} from "../app/pages/home.tsx";
+import {AddCoursePage} from "../app/pages/addCourse.tsx";
 
 export const routes = [
     {
@@ -14,10 +15,10 @@ export const routes = [
                         path: "",
                         element: <HomePage/>,
                     },
-                    // {
-                    //     path: "add",
-                    //     element: <AddTodoPage/>
-                    // },
+                    {
+                        path: "add",
+                        element: <AddCoursePage/>
+                    },
                     // {
                     //     path: ":id",
                     //     element: <EditTodoPage/>

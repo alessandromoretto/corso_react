@@ -34,8 +34,12 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
         return !!(tokenContent && tokenContent.email);
     };
 
+    const isAdmin = () => {
+        return (tokenContent && tokenContent.role == "admin");
+    };
+
     return (
-        <AuthContext.Provider value={{tokenContent, handleSetToken, isLogged}}>
+        <AuthContext.Provider value={{tokenContent, handleSetToken, isLogged, isAdmin, token}}>
             {children}
         </AuthContext.Provider>
     )

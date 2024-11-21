@@ -1,4 +1,4 @@
-import {ILogin, IRegister} from "../lib/interfaces.ts";
+import {AddCourseRequest, ILogin, IRegister} from "../lib/interfaces.ts";
 import z from "zod";
 
 class ValidationService {
@@ -23,6 +23,16 @@ class ValidationService {
         return loginRequest.safeParse(login);
     }
 
+    addCourseValidator(course: AddCourseRequest) {
+        const addCourseRequest = z.object({
+            title: z.string().min(2).max(20),
+            description: z.string().min(2).max(200),
+            duration: z.coerce.number().min(1),
+            category: z.coerce.number().min(1)
+        }).required();
+
+        return addCourseRequest.safeParse(course);
+    }
 }
 
 export default new ValidationService();

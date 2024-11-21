@@ -5,7 +5,7 @@ import {IAuthContext} from "../../lib/interfaces.ts";
 
 export function Header(){
 
-    const {tokenContent, handleSetToken, isLogged} = useContext(AuthContext) as IAuthContext;
+    const {tokenContent, handleSetToken, isLogged, isAdmin} = useContext(AuthContext) as IAuthContext;
     const navigator = useNavigate();
 
     const logout = (e: any) => {
@@ -24,19 +24,18 @@ export function Header(){
                     <nav>
                         <ul>
                             <li>
-                                <NavLink to={'/'}>Todos List</NavLink>
+                                <NavLink to={'/'}>Courses List</NavLink>
                             </li>
-                            <li>
-                                <NavLink to={'/add'}>Add Todo</NavLink>
-                            </li>
-                            {/*{!user.email ?*/}
-                            {/*    <li>*/}
-                            {/*        <NavLink to={'/login'}>Login</NavLink>*/}
-                            {/*    </li> :*/}
+                            {isAdmin() ?
+                                <li>
+                                    <NavLink to={'/add'}>Add Course</NavLink>
+                                </li>
+                                :
+                                <></>
+                            }
                             <li >
                                 <a href={''} onClick={logout}>Logout</a>
                             </li>
-                            {/*}*/}
                         </ul>
                     </nav>
                 </header>

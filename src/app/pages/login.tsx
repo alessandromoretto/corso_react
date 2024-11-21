@@ -50,6 +50,9 @@ export function LoginPage() {
         setLogin({...login, [name]: value});
     }
 
+    const goToSignup = () => {
+        navigator('/signup')
+    }
     return (
         <div>
             <h1>Login</h1>
@@ -59,19 +62,21 @@ export function LoginPage() {
                 :
                 <form onSubmit={handleSubmit}>
 
-                <div>
-                    <label>Email</label>
-                    <input name="email" type="email" value={login.email} onChange={handleInputChange}/>
-                </div>
+                    <div>
+                        <label>Email</label>
+                        <input name="email" type="email" value={login.email} onChange={handleInputChange}/>
+                    </div>
 
-                <div>
-                    <label>Password</label>
-                    <input name="password" type="password" value={login.password} onChange={handleInputChange}/>
-                </div>
+                    <div>
+                        <label>Password</label>
+                        <input name="password" type="password" value={login.password} onChange={handleInputChange}/>
+                    </div>
 
-                {wrongCredz && <h5 style={{color: "red"}}>Wrong Credentials</h5>}
-                <button className={'mt-4'}>Login</button>
-            </form>}
+                    {wrongCredz && <h5 style={{color: "red"}}>Wrong Credentials</h5>}
+                    <button className={'mt-4'}>Login</button>
+                    <button className={'mt-6'} onClick={goToSignup}>Register</button>
+
+                </form>}
         </div>
     )
 }

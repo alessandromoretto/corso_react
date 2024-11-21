@@ -68,9 +68,11 @@ export interface User {
 }
 
 export interface IAuthContext {
+    token: string,
     tokenContent: ITokenContent,
     handleSetToken: (token: string) => void,
     isLogged: () => boolean,
+    isAdmin: () => boolean,
 }
 
 
@@ -92,4 +94,31 @@ export interface ITokenContent {
     "lastName": string,
     "email": string,
     "role": string,
+}
+
+export interface AddCourseRequest{
+    id?: number;
+    title: string;
+    description: string;
+    duration: number;
+    category: number;
+}
+
+export interface CourseFormItemProps {
+    value?: ITodo,
+    onSaveClick: (todo: ITodo) => void,
+    buttonLabel: string
+}
+
+export interface Category{
+    id: number;
+    name: string;
+}
+
+export interface Course {
+    id: number;
+    title: string;
+    description: string;
+    duration: number;
+    category: Category;
 }
