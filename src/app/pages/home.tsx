@@ -6,12 +6,15 @@ import * as React from "react";
 import {useNavigate} from "react-router-dom";
 
 export function HomePage() {
-    const {token} = useContext(AuthContext) as IAuthContext;
+    const {token, isLogged} = useContext(AuthContext) as IAuthContext;
     const navigator = useNavigate();
 
     const [courses, setCourses] = useState<Course[]>([]);
 
     useEffect(() => {
+        if (!isLogged()) {
+            navigator('/login');
+        }
         fetchCourses();
     },[])
 
