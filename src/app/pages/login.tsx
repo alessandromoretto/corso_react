@@ -2,6 +2,7 @@ import * as React from "react";
 import {useContext, useState} from "react";
 import {AuthContext} from "../context/authContext.tsx";
 import {IAuthContext, User} from "../../lib/interfaces.ts";
+import {useNavigate} from "react-router-dom";
 
 export function Login() {
 
@@ -9,10 +10,12 @@ export function Login() {
 
     const [user, setUser] = useState<User>({firstName: "", lastName: "", email: ""});
 
+    const navigator = useNavigate();
 
      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
          e.preventDefault();
          handleSetUser(user);
+         navigator('/')
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

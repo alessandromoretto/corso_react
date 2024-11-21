@@ -69,4 +69,5 @@ export interface User {
 export interface IAuthContext {
     user: User,
     handleSetUser: (user: User) => void,
+    isLogged: () => boolean,
 }
