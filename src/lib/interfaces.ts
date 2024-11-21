@@ -59,3 +59,14 @@ export interface UserFormData {
     enabled: boolean;
     category: number;
 }
+
+export interface User {
+    firstName: string;
+    lastName: string;
+    email: string;
+}
+
+export interface IAuthContext {
+    user: User,
+    handleSetUser: (user: User) => void,
+}

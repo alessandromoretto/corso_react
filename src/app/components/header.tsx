@@ -1,8 +1,15 @@
 import {NavLink} from "react-router-dom";
+import {useContext} from "react";
+import {AuthContext} from "../context/authContext.tsx";
+import {IAuthContext} from "../../lib/interfaces.ts";
 
 export function Header(){
+
+    const {user} = useContext(AuthContext) as IAuthContext;
+
     return (
-        <>
+        <header>
+            <h3>User: {user.firstName}</h3>
             <nav>
                 <ul>
                     <li>
@@ -13,6 +20,6 @@ export function Header(){
                     </li>
                 </ul>
             </nav>
-        </>
+        </header>
     )
 }

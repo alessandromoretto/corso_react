@@ -1,10 +1,8 @@
-import {Home} from "../app/pages/home.tsx";
 import {Layout} from "../app/components/layout.tsx";
-import {RegisterForm} from "../app/components/registerForm.tsx";
 import {TodoHomePage} from "../app/pages/todoHomePage.tsx";
-import {TodoItemForm} from "../app/components/todoItemForm.tsx";
 import {AddTodoPage} from "../app/pages/addTodoPage.tsx";
 import {EditTodoPage} from "../app/pages/editTodoPage.tsx";
+import {Login} from "../app/pages/login.tsx";
 
 export const routes = [
     {
@@ -24,7 +22,11 @@ export const routes = [
                     {
                         path: ":id",
                         element: <EditTodoPage/>
-                    }
+                    },
+                    {
+                        path: 'login',
+                        element: <Login/>,
+                    },
                 ]
             },
             // {
@@ -34,6 +36,7 @@ export const routes = [
         ]
 
     },
+
     {
         path: "*",
         element: <h1>NON TROVATA</h1>
