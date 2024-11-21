@@ -64,10 +64,19 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
+    password?: string;
 }
 
 export interface IAuthContext {
     user: User,
     handleSetUser: (user: User) => void,
     isLogged: () => boolean,
+}
+
+
+export interface IRegister {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
 }
