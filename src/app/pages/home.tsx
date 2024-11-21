@@ -1,11 +1,13 @@
 import {useContext, useEffect, useState} from "react";
-import {getAllCategoriesService, getAllCoursesService} from "../../services/coursesService.ts";
+import {deleteCourseByIdService, getAllCategoriesService, getAllCoursesService} from "../../services/coursesService.ts";
 import {AuthContext} from "../context/authContext.tsx";
 import {AddCourseRequest, Category, Course, IAuthContext} from "../../lib/interfaces.ts";
 import * as React from "react";
+import {useNavigate} from "react-router-dom";
 
 export function HomePage() {
     const {token} = useContext(AuthContext) as IAuthContext;
+    const navigator = useNavigate();
 
     const [courses, setCourses] = useState<Course[]>([]);
 
@@ -24,6 +26,14 @@ export function HomePage() {
                 setCourses(res)
             })
     };
+
+    const handleDelete = (id: number) => {
+        console.log(id)
+        deleteCourseByIdService(id, token)
+            .then(res => {
+                fetchCourses()
+            })
+    }
     return (
         <div>
             <h1>GESTIONE CORSI</h1>
@@ -48,7 +58,8 @@ export function HomePage() {
                         </div>
 
 
-                        {/*<button className={'mt-4'}>Add</button>*/}
+                        <button className={'mt-4'} onClick={() => navigator('/' + course.id)}>Edit</button>
+                        <button className={'mt-4'} onClick={() => handleDelete(course.id)}>Delete</button>
                     </div>
                 </div>
             )}

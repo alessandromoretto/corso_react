@@ -21,6 +21,24 @@ class HttpClient {
         }).then(res => res.json());
     }
 
+    async put(api: string, body: any, token?: string): Promise<any> {
+        return fetch(`${baseUrl}/${api}`, {
+            method: "PUT",
+            body: JSON.stringify(body),
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then(res => res.json());
+    }
+
+    async delete(api: string, token?: string): Promise<any> {
+        return fetch(`${baseUrl}/${api}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then(res => res.json());
+    }
 }
 
 export const httpClient = new HttpClient();

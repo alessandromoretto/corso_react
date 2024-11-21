@@ -3,6 +3,7 @@ import {SignupPage} from "../app/pages/signup.tsx";
 import {Layout} from "../app/components/layout.tsx";
 import {HomePage} from "../app/pages/home.tsx";
 import {AddCoursePage} from "../app/pages/addCourse.tsx";
+import {EditCoursePage} from "../app/pages/editCoursePage.tsx";
 
 export const routes = [
     {
@@ -19,10 +20,10 @@ export const routes = [
                         path: "add",
                         element: <AddCoursePage/>
                     },
-                    // {
-                    //     path: ":id",
-                    //     element: <EditTodoPage/>
-                    // },
+                    {
+                        path: ":id",
+                        element: <EditCoursePage/>
+                    },
                 ]
             },
             // {
