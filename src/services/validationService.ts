@@ -33,6 +33,17 @@ class ValidationService {
 
         return addCourseRequest.safeParse(course);
     }
+
+    editCourseValidator(course: AddCourseRequest) {
+        const updateCourseRequest = z.object({
+            title: z.string().min(2).max(20),
+            description: z.string().min(2).max(200),
+            duration: z.coerce.number().min(1),
+            categoryId: z.coerce.number().min(1)
+        }).required();
+        return updateCourseRequest.safeParse(course);
+
+    }
 }
 
 export default new ValidationService();

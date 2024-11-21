@@ -98,10 +98,11 @@ export interface ITokenContent {
 
 export interface AddCourseRequest{
     id?: number;
+    categoryId?: number;
     title: string;
     description: string;
     duration: number;
-    category: number;
+    category?: number;
 }
 
 export interface CourseFormItemProps {
@@ -121,4 +122,11 @@ export interface Course {
     description: string;
     duration: number;
     category: Category;
+}
+
+export interface CourseUpdateModel{
+    title: string;
+    description: string;
+    duration: number;
+    categoryId: number;
 }

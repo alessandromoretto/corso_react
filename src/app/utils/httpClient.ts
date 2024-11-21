@@ -2,7 +2,6 @@ const baseUrl = 'http://localhost:3000/api';
 class HttpClient {
 
     async get(api: string, token?: string): Promise<any> {
-        console.log(api, token);
         return fetch(`${baseUrl}/${api}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,

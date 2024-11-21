@@ -1,4 +1,4 @@
-import {AddCourseRequest, Category, IAuthContext} from "../../lib/interfaces.ts";
+import {AddCourseRequest, Category, CourseUpdateModel, IAuthContext} from "../../lib/interfaces.ts";
 import {useNavigate, useParams} from "react-router-dom";
 import * as React from "react";
 import {useContext, useEffect, useState} from "react";
@@ -18,7 +18,7 @@ export function EditCoursePage() {
     const navigator = useNavigate();
     const {token, isAdmin} = useContext(AuthContext) as IAuthContext;
 
-    const [course, setCourse] = useState<AddCourseRequest>({category:0, title: '', description: '', duration: 0});
+    const [course, setCourse] = useState<CourseUpdateModel>({categoryId:0 , title: '', description: '', duration: 0});
     const [categories, setCategories] = useState<Category[]>([]);
 
 
@@ -28,13 +28,21 @@ export function EditCoursePage() {
             navigator('/login')
         }
         fetchCategories();
+
+    },[])
+
+    useEffect(() => {
         getCourseByIdService(id, token)
             .then(res => {
                 console.log(res)
                 setCourse(res)
             })
-    },[])
+    }, [categories]);
 
+
+    useEffect(() => {
+        console.log(course)
+    }, [course]);
 
     const fetchCategories = () => {
         getAllCategoriesService(token)
@@ -46,7 +54,7 @@ export function EditCoursePage() {
 
     const handleUpdate = (e: any) => {
         e.preventDefault();
-        const validation = validationService.addCourseValidator(course);
+        const validation = validationService.editCourseValidator(course);
         console.log(validation);
         if (!validation.success) {
             return
@@ -73,11 +81,10 @@ export function EditCoursePage() {
     return (
         <div className={'w-100 mt-4'}>
             <div className={'mx-auto'}>
-                <h1 className="text-center">Add Course</h1>
+                <h1 className="text-center">Edit Course</h1>
                 <div className="card mx-auto" style={{width: '18rem'}}>
                     <div className="card-body mb-8">
                         <form onSubmit={handleUpdate}>
-                            {/*<input name="id" hidden={true} value={course.id} onChange={handleInputChange}/>*/}
 
                             <div>
                                 <label>Title</label>
